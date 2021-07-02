@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import './app.css';
-import {
-  Navbar,
-  Container,
-  Row,
-  Nav,
-  NavDropdown,
-  Jumbotron,
-  Button,
-} from 'react-bootstrap';
 import initData from './data/teas';
-import Card from './components/card';
+import React, { useState, useCallback } from 'react';
+import Home from './pages/home/home';
+import Detail from './pages/detail/detail';
+import Cart from './pages/cart/cart';
 
 function App() {
-  const [merchandises, setMerchandise] = useState(initData);
+  const [merchandises, setMerchandises] = useState(initData);
+  const [stocks, setStocks] = useState({ 0: 10, 1: 7, 2: 12 });
+  const showMore = useCallback((added) => {
+    setMerchandises((prevState) => {
+      const newStates = [...prevState, ...added];
+      return newStates;
+    });
+  }, []);
 
   return (
     <div className='App'>
@@ -23,8 +25,12 @@ function App() {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='me-auto'>
-              <Nav.Link href='#home'>Home</Nav.Link>
-              <Nav.Link href='#link'>Link</Nav.Link>
+              <Nav.Link as={Link} to='/'>
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to='/cart'>
+                My Cart
+              </Nav.Link>
               <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
                 <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
                 <NavDropdown.Item href='#action/3.2'>
@@ -43,24 +49,20 @@ function App() {
         </Container>
       </Navbar>
 
-      <Jumbotron className='background'>
-        <h1>20% Season Off</h1>
-        <p>
-          This is a simple hero unit, a simple jumbotron-style component for
-          calling extra attention to featured content or information.
-        </p>
-        <p>
-          <Button variant='primary'>Learn more</Button>
-        </p>
-      </Jumbotron>
-
-      <Container>
-        <Row>
-          {merchandises.map((m) => (
-            <Card key={m.id} merchandise={m} />
-          ))}
-        </Row>
-      </Container>
+      <Switch>
+        <Route exact path='/'>
+          <Home merchandises={merchandises} showMore={showMore} />
+        </Route>
+        <Route path='/detail/:id'>
+          <Detail merchandises={merchandises} stocks={stocks} />
+        </Route>
+        <Route path='/cart'>
+          <Cart />
+        </Route>
+        <Route path='/:id'>
+          <h1>Not Found</h1>
+        </Route>
+      </Switch>
     </div>
   );
 }
