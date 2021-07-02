@@ -4,7 +4,7 @@ import { Jumbotron, Button, Container, Row } from 'react-bootstrap';
 import axios from 'axios';
 import Card from '../../components/card/card';
 
-const Home = memo(({ merchandises, showMore }) => (
+const Home = memo(({ products, showMore }) => (
   <>
     {/* Todo: Remove Jumbtron, not supported */}
     <Jumbotron className='background'>
@@ -14,7 +14,7 @@ const Home = memo(({ merchandises, showMore }) => (
         event with 20% off all products!
       </p>
       <div className='button-container'>
-        {/* Todo: Make action */}
+        {/* Todo: Do Something when it is clicked */}
         <Button className='button-container' variant='info'>
           Learn more
         </Button>
@@ -23,8 +23,8 @@ const Home = memo(({ merchandises, showMore }) => (
 
     <Container>
       <Row>
-        {merchandises.map((m) => (
-          <Card key={m.id} merchandise={m} />
+        {products.map((m) => (
+          <Card key={m.id} product={m} />
         ))}
       </Row>
     </Container>
@@ -33,6 +33,7 @@ const Home = memo(({ merchandises, showMore }) => (
       <Button
         className='mb-3'
         variant='info'
+        // Todo: dependency injection (axios)
         onClick={() => {
           axios
             .get('https://codingapple1.github.io/shop/data2.json')

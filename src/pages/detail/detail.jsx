@@ -3,11 +3,11 @@ import { Container, Row, Col, Button, Nav } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-const Detail = ({ merchandises, stocks, cartInfo, dispatch }) => {
+const Detail = ({ products, stocks, cartInfo, dispatch }) => {
   const { id } = useParams();
   const [alert, setAlert] = useState(true);
   const [tabId, setTabId] = useState(0);
-  const target = merchandises.find((m) => m.id === parseInt(id));
+  const target = products.find((m) => m.id === parseInt(id));
   const history = useHistory();
 
   const addToCart = () => {

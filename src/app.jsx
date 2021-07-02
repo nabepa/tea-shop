@@ -7,12 +7,12 @@ import Home from './pages/home/home';
 import Detail from './pages/detail/detail';
 import Cart from './pages/cart/cart';
 
-function App() {
-  const [merchandises, setMerchandises] = useState(initData);
-  // Todo: combine merchandises & stocks
+function App({ productRepository }) {
+  const [products, setProducts] = useState(initData);
+  // Todo: combine products & stocks
   const [stocks, setStocks] = useState({ 0: 10, 1: 7, 2: 12 });
   const showMore = useCallback((added) => {
-    setMerchandises((prevState) => {
+    setProducts((prevState) => {
       const newStates = [...prevState, ...added];
       return newStates;
     });
@@ -20,6 +20,13 @@ function App() {
 
   return (
     <div className='App'>
+      <button
+        onClick={() => {
+          productRepository.get();
+        }}
+      >
+        Test
+      </button>
       <Navbar bg='light' expand='lg'>
         <Container>
           <Navbar.Brand as={Link} to='/'>
@@ -54,10 +61,10 @@ function App() {
 
       <Switch>
         <Route exact path='/'>
-          <Home merchandises={merchandises} showMore={showMore} />
+          <Home products={products} showMore={showMore} />
         </Route>
         <Route path='/detail/:id'>
-          <Detail merchandises={merchandises} stocks={stocks} />
+          <Detail products={products} stocks={stocks} />
         </Route>
         {/* Todo: Add pages of each tea */}
         <Route path='/cart'>

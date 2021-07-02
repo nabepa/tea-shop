@@ -1,12 +1,14 @@
+import './index.css';
+import './common/common.scss';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
 import App from './app';
-import { createStore } from 'redux';
-import './common/common.scss';
+import ProductRepository from './service/productRepository';
 
+const productRepository = new ProductRepository();
 const initData = [{ id: 0, name: 'White and Black', amount: 2 }];
 const store = createStore(reducer);
 function reducer(state = initData, action) {
@@ -49,7 +51,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <App productRepository={productRepository} />
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
