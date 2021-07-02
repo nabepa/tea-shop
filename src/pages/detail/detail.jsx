@@ -1,8 +1,6 @@
 import { useHistory, useParams } from 'react-router-dom';
 import { Container, Row, Col, Button, Nav } from 'react-bootstrap';
-import { CSSTransition } from 'react-transition-group';
 import React, { useEffect, useState } from 'react';
-import Stock from '../../components/stock/stock';
 import { connect } from 'react-redux';
 
 const Detail = ({ merchandises, stocks, cartInfo, dispatch }) => {
@@ -32,13 +30,15 @@ const Detail = ({ merchandises, stocks, cartInfo, dispatch }) => {
   return (
     <>
       <Container>
+        {/* Todo: 서버와 연계, 재고 없는 경우, 재고 적은 경우 */}
+        {/* +재고 없으면  add to cart 못누르게 */}
         {alert ? (
-          <div className='my-alert-red'>
-            <p>재고가 얼마 남지 않았습니다</p>
+          <div className='my-alert-black'>
+            <p>Low in Stock</p>
           </div>
         ) : null}
         <Row>
-          <Col md={6}>
+          <Col className='mt-5' md={6}>
             <img
               src={`https://codingapple1.github.io/shop/shoes${
                 target.id + 1
@@ -46,15 +46,23 @@ const Detail = ({ merchandises, stocks, cartInfo, dispatch }) => {
               width='100%'
             />
           </Col>
-          <Col md={6} className='mt-4'>
+          <Col className='mt-4' md={6}>
             <h4 className='pt-5'>{target.title}</h4>
             <p>{target.content}</p>
             <p>{target.price}</p>
-            <Stock stockCount={stocks[target.id]} />
-            <Button variant='success' onClick={addToCart}>
+            <p>{stocks[target.id]}</p>
+            <Button variant='outline-success' onClick={addToCart}>
               Add To Cart
             </Button>
-            <Button variant='success'>Back</Button>
+            <Button
+              className='mx-2'
+              variant='outline-success'
+              onClick={() => {
+                history.goBack();
+              }}
+            >
+              Back
+            </Button>
           </Col>
         </Row>
       </Container>
@@ -67,28 +75,26 @@ const Detail = ({ merchandises, stocks, cartInfo, dispatch }) => {
               setTabId(0);
             }}
           >
-            Option 0
+            Product Information
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link
+            variant='success'
             eventKey='link-1'
             onClick={() => {
               setTabId(1);
             }}
           >
-            Option 1
+            Related
           </Nav.Link>
         </Nav.Item>
       </Nav>
-
-      <CSSTransition in={true} classNames='anim-tab' timeout={500}>
-        <TabContent tabId={tabId} />
-      </CSSTransition>
     </>
   );
 };
 
+// Todo: make as component
 function TabContent({ tabId }) {
   switch (tabId) {
     case 0:

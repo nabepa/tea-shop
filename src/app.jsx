@@ -9,6 +9,7 @@ import Cart from './pages/cart/cart';
 
 function App() {
   const [merchandises, setMerchandises] = useState(initData);
+  // Todo: combine merchandises & stocks
   const [stocks, setStocks] = useState({ 0: 10, 1: 7, 2: 12 });
   const showMore = useCallback((added) => {
     setMerchandises((prevState) => {
@@ -22,6 +23,7 @@ function App() {
       <Navbar bg='light' expand='lg'>
         <Container>
           <Navbar.Brand as={Link} to='/'>
+            {/* Todo: Add icon */}
             Tea World
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />

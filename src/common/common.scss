@@ -1,3 +1,19 @@
+$color-red: #ff0202;
+$color-black: #111111;
+$color-green: #27a744;
+
+a {
+  color: $color-black;
+}
+
+a:hover {
+  color: $color-green;
+}
+
+tr {
+  text-align: center;
+}
+
 .my-alert {
   padding: 20px;
   border-radius: 5px;
@@ -9,7 +25,19 @@
 .my-alert-red {
   @extend .my-alert;
   color: white;
-  background-color: red;
+  background-color: $color-red;
+}
+
+.my-alert-black {
+  @extend .my-alert;
+  color: white;
+  background-color: $color-black;
+}
+
+.my-alert-green {
+  @extend .my-alert;
+  color: white;
+  background-color: $color-green;
 }
 
 .my-alert p {

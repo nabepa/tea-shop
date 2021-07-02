@@ -1,5 +1,5 @@
 .background {
-  background-image: url('./background.jpeg');
+  background-image: url('./common/background.jpeg');
   background-size: cover;
   background-position: bottom;
   color: white;

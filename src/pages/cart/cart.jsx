@@ -1,10 +1,23 @@
-import { Table } from 'react-bootstrap';
+import './cart.scss';
+import { Table, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Cart = ({ cartInfo, dispatch }) => {
+  const history = useHistory();
+
   return (
     <>
+      <Button
+        className='mx-2 my-2'
+        variant='outline-dark'
+        onClick={() => {
+          history.goBack();
+        }}
+      >
+        Back
+      </Button>
       <Table responsive>
         <thead>
           <tr>
@@ -21,6 +34,7 @@ const Cart = ({ cartInfo, dispatch }) => {
               <td>{info.name}</td>
               <td>
                 <button
+                  className='stock-button'
                   onClick={() => {
                     dispatch({ type: 'DecreaseAmount', payload: info.id });
                   }}
@@ -29,6 +43,7 @@ const Cart = ({ cartInfo, dispatch }) => {
                 </button>
                 {info.amount}
                 <button
+                  className='stock-button'
                   onClick={() => {
                     dispatch({ type: 'IncreaseAmount', payload: info.id });
                   }}
@@ -42,8 +57,8 @@ const Cart = ({ cartInfo, dispatch }) => {
         </tbody>
       </Table>
 
-      <div className='my-alert-red'>
-        <p>지금 구매하시면 신규할인 20%</p>
+      <div className='my-alert-green'>
+        <p>Now on Sale 20% off</p>
       </div>
     </>
   );

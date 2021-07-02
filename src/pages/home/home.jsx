@@ -37,6 +37,7 @@ const Home = memo(({ merchandises, showMore }) => (
           axios
             .get('https://codingapple1.github.io/shop/data2.json')
             .then((res) => {
+              console.log(res.data);
               showMore(res.data);
             })
             .catch((res) => {
