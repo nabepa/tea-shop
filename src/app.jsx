@@ -1,5 +1,5 @@
 import { Switch, Route, Link } from 'react-router-dom';
-import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import './app.css';
 import initData from './data/teas';
 import React, { useState, useCallback } from 'react';
@@ -21,29 +21,30 @@ function App() {
     <div className='App'>
       <Navbar bg='light' expand='lg'>
         <Container>
-          <Navbar.Brand href='#home'>Tea World</Navbar.Brand>
+          <Navbar.Brand as={Link} to='/'>
+            Tea World
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='me-auto'>
               <Nav.Link as={Link} to='/'>
                 Home
               </Nav.Link>
+              <Nav.Link as={Link} to='/green'>
+                Green Tea
+              </Nav.Link>
+              <Nav.Link as={Link} to='/herbal'>
+                Herbal Tea
+              </Nav.Link>
+              <Nav.Link as={Link} to='/rooibos'>
+                Rooibos Tea
+              </Nav.Link>
+              <Nav.Link as={Link} to='/blend'>
+                Special Blend
+              </Nav.Link>
               <Nav.Link as={Link} to='/cart'>
                 My Cart
               </Nav.Link>
-              <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
-                <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
-                <NavDropdown.Item href='#action/3.2'>
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href='#action/3.3'>
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href='#action/3.4'>
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -56,6 +57,7 @@ function App() {
         <Route path='/detail/:id'>
           <Detail merchandises={merchandises} stocks={stocks} />
         </Route>
+        {/* Todo: Add pages of each tea */}
         <Route path='/cart'>
           <Cart />
         </Route>

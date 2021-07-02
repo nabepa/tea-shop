@@ -1,6 +1,5 @@
 import { useHistory, useParams } from 'react-router-dom';
 import { Container, Row, Col, Button, Nav } from 'react-bootstrap';
-import './detail.scss';
 import { CSSTransition } from 'react-transition-group';
 import React, { useEffect, useState } from 'react';
 import Stock from '../../components/stock/stock';

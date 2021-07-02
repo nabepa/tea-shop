@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './app';
 import { createStore } from 'redux';
+import './common/common.scss';
 
 const initData = [{ id: 0, name: 'White and Black', amount: 2 }];
 const store = createStore(reducer);
