@@ -9,7 +9,8 @@ import Cart from './pages/cart/cart';
 
 function App({ productRepository }) {
   const [products, setProducts] = useState(initData);
-  const showMore = useCallback((added) => {
+  const showMore = useCallback(async () => {
+    const added = await productRepository.getMore();
     setProducts((prevState) => {
       const newStates = [...prevState, ...added];
       return newStates;

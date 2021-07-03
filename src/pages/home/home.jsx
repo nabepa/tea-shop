@@ -1,7 +1,6 @@
 import './home.scss';
 import React, { memo } from 'react';
 import { Jumbotron, Button, Container, Row } from 'react-bootstrap';
-import axios from 'axios';
 import Card from '../../components/card/card';
 
 const Home = memo(({ products, showMore }) => (
@@ -30,22 +29,7 @@ const Home = memo(({ products, showMore }) => (
     </Container>
 
     <div className='button-container'>
-      <Button
-        className='mb-3'
-        variant='info'
-        // Todo: dependency injection (axios)
-        onClick={() => {
-          axios
-            .get('https://codingapple1.github.io/shop/data2.json')
-            .then((res) => {
-              console.log(res.data);
-              showMore(res.data);
-            })
-            .catch((res) => {
-              console.log(res.status);
-            });
-        }}
-      >
+      <Button className='mb-3' variant='info' onClick={showMore}>
         Show More
       </Button>
     </div>
