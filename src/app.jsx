@@ -66,15 +66,16 @@ function App({ productRepository }) {
         </Route>
       </Switch>
 
-      {/* <button
+      <button
         onClick={async () => {
-          const test = await productRepository.getAll();
-          console.log(test);
-          // productRepository.getAll();
+          const test = await productRepository.getMore();
+          test.forEach((t) => {
+            console.log(t.name, t.createdAt);
+          });
         }}
       >
         test
-      </button> */}
+      </button>
     </div>
   );
 }

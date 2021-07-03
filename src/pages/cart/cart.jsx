@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
+// Todo: 주문 기능
+
 const Cart = ({ cartInfo, dispatch }) => {
   const history = useHistory();
 
