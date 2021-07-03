@@ -1,6 +1,6 @@
 const teas = [
   {
-    id: 0,
+    id: '0',
     category: 'green',
     name: 'sencha',
     flavour: 'Fresh, delicate Umami touch.',
@@ -10,7 +10,7 @@ const teas = [
   },
 
   {
-    id: 1,
+    id: '1',
     category: 'green',
     name: 'raindrop',
     flavour: 'Fresh, grassy after rain day.',
@@ -20,7 +20,7 @@ const teas = [
   },
 
   {
-    id: 2,
+    id: '2',
     category: 'herbal',
     name: 'festival',
     flavour: 'Tosty, sweet and fruity.',

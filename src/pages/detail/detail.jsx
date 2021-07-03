@@ -7,8 +7,8 @@ const Detail = ({ products, cartInfo, dispatch }) => {
   const { id } = useParams();
   const [alert, setAlert] = useState(true);
   const [tabId, setTabId] = useState(0);
-  const target = products.find((m) => m.id === parseInt(id));
   const history = useHistory();
+  const target = products.find((m) => m.id === id);
 
   const addToCart = () => {
     dispatch({

@@ -17,6 +17,8 @@ function App({ productRepository }) {
     });
   }, []);
 
+  console.log(products);
+
   return (
     <div className='App'>
       <Navbar bg='light' expand='lg'>
@@ -66,17 +68,6 @@ function App({ productRepository }) {
           <h1>Not Found</h1>
         </Route>
       </Switch>
-
-      <button
-        onClick={async () => {
-          const test = await productRepository.getMore();
-          test.forEach((t) => {
-            console.log(t.name, t.createdAt);
-          });
-        }}
-      >
-        test
-      </button>
     </div>
   );
 }
