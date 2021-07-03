@@ -23,8 +23,8 @@ const Home = memo(({ products, showMore }) => (
 
     <Container>
       <Row>
-        {products.map((m) => (
-          <Card key={m.id} product={m} />
+        {products.map((product) => (
+          <Card key={product.id} product={product} />
         ))}
       </Row>
     </Container>

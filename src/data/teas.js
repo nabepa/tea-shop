@@ -1,23 +1,32 @@
 const teas = [
   {
     id: 0,
-    title: 'White and Black',
-    content: 'Born in France',
-    price: 120000,
+    category: 'green',
+    name: 'sencha',
+    flavour: 'Fresh, delicate Umami touch.',
+    price: 15.55,
+    stock: 3,
+    url: 'https://res.cloudinary.com/dukjzo7tf/image/upload/v1625295884/tea-shop/green-sencha.jpg',
   },
 
   {
     id: 1,
-    title: 'Red Knit',
-    content: 'Born in Seoul',
-    price: 110000,
+    category: 'green',
+    name: 'raindrop',
+    flavour: 'Fresh, grassy after rain day.',
+    price: 18.95,
+    stock: 2,
+    url: 'https://res.cloudinary.com/dukjzo7tf/image/upload/v1625293684/tea-shop/green-raindrop.jpg',
   },
 
   {
     id: 2,
-    title: 'Grey Yordan',
-    content: 'Born in the States',
-    price: 130000,
+    category: 'herbal',
+    name: 'festival',
+    flavour: 'Tosty, sweet and fruity.',
+    price: 12.45,
+    stock: 4,
+    url: 'https://res.cloudinary.com/dukjzo7tf/image/upload/v1625293684/tea-shop/herbal-festival.jpg',
   },
 ];
 

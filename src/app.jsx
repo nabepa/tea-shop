@@ -9,8 +9,6 @@ import Cart from './pages/cart/cart';
 
 function App({ productRepository }) {
   const [products, setProducts] = useState(initData);
-  // Todo: combine products & stocks
-  const [stocks, setStocks] = useState({ 0: 10, 1: 7, 2: 12 });
   const showMore = useCallback((added) => {
     setProducts((prevState) => {
       const newStates = [...prevState, ...added];
@@ -20,13 +18,6 @@ function App({ productRepository }) {
 
   return (
     <div className='App'>
-      <button
-        onClick={() => {
-          productRepository.get();
-        }}
-      >
-        Test
-      </button>
       <Navbar bg='light' expand='lg'>
         <Container>
           <Navbar.Brand as={Link} to='/'>
@@ -64,7 +55,7 @@ function App({ productRepository }) {
           <Home products={products} showMore={showMore} />
         </Route>
         <Route path='/detail/:id'>
-          <Detail products={products} stocks={stocks} />
+          <Detail products={products} />
         </Route>
         {/* Todo: Add pages of each tea */}
         <Route path='/cart'>
@@ -74,6 +65,16 @@ function App({ productRepository }) {
           <h1>Not Found</h1>
         </Route>
       </Switch>
+
+      {/* <button
+        onClick={async () => {
+          const test = await productRepository.getAll();
+          console.log(test);
+          // productRepository.getAll();
+        }}
+      >
+        test
+      </button> */}
     </div>
   );
 }

@@ -1,17 +1,15 @@
 import { firebaseDB } from './firebase';
 
 class ProductRepository {
-  get() {
-    firebaseDB
-      .collection('products')
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          console.log(doc.id, doc.data());
-        });
-      });
+  async getAll() {
+    const querySnapshot = await firebaseDB.collection('products').get();
+    const products = [];
+    querySnapshot.forEach((doc) => {
+      products.push({ ...doc.data(), id: doc.id });
+    });
+    return products;
   }
-  order() {}
+  // order() {}
 }
 
 export default ProductRepository;

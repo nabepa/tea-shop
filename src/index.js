@@ -9,7 +9,7 @@ import App from './app';
 import ProductRepository from './service/productRepository';
 
 const productRepository = new ProductRepository();
-const initData = [{ id: 0, name: 'White and Black', amount: 2 }];
+const initData = [];
 const store = createStore(reducer);
 function reducer(state = initData, action) {
   switch (action.type) {

@@ -3,7 +3,7 @@ import { Container, Row, Col, Button, Nav } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-const Detail = ({ products, stocks, cartInfo, dispatch }) => {
+const Detail = ({ products, cartInfo, dispatch }) => {
   const { id } = useParams();
   const [alert, setAlert] = useState(true);
   const [tabId, setTabId] = useState(0);
@@ -13,7 +13,7 @@ const Detail = ({ products, stocks, cartInfo, dispatch }) => {
   const addToCart = () => {
     dispatch({
       type: 'AddToCart',
-      payload: { id: target.id, name: target.title },
+      payload: { id: target.id, name: target.name },
     });
     history.push('/cart');
   };
@@ -39,18 +39,13 @@ const Detail = ({ products, stocks, cartInfo, dispatch }) => {
         ) : null}
         <Row>
           <Col className='mt-5' md={6}>
-            <img
-              src={`https://codingapple1.github.io/shop/shoes${
-                target.id + 1
-              }.jpg`}
-              width='100%'
-            />
+            <img src={target.url} width='100%' />
           </Col>
           <Col className='mt-4' md={6}>
-            <h4 className='pt-5'>{target.title}</h4>
-            <p>{target.content}</p>
-            <p>{target.price}</p>
-            <p>{stocks[target.id]}</p>
+            <h4 className='pt-5'>{target.name}</h4>
+            <p>{target.flavour}</p>
+            <p>$ {target.price}</p>
+            <p>{target.stock} EA</p>
             <Button variant='outline-success' onClick={addToCart}>
               Add To Cart
             </Button>

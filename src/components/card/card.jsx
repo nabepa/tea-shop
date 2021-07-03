@@ -11,14 +11,10 @@ const Card = ({ product }) => {
         history.push(`/detail/${product.id}`);
       }}
     >
-      <img
-        src={`https://codingapple1.github.io/shop/shoes${product.id + 1}.jpg`}
-        width='100%'
-        alt='test'
-      />
-      <h4>{product.title}</h4>
-      <p>{product.content}</p>
-      <p>{product.price}</p>
+      <img src={product.url} width='100%' alt='test' />
+      <h4>{product.name}</h4>
+      <p>{product.flavour}</p>
+      <p>$ {product.price}</p>
     </Col>
   );
 };
