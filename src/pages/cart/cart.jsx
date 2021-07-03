@@ -30,7 +30,39 @@ const Cart = ({ cartInfo, dispatch }) => {
           </tr>
         </thead>
         <tbody>
-          {cartInfo.map((info, index) => (
+          {Object.keys(cartInfo).map((id, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td>{cartInfo[id].name}</td>
+              <td>
+                <button
+                  className='stock-button'
+                  onClick={() => {
+                    dispatch({
+                      type: 'DecreaseAmount',
+                      payload: cartInfo[id].id,
+                    });
+                  }}
+                >
+                  -
+                </button>
+                {cartInfo[id].amount}
+                <button
+                  className='stock-button'
+                  onClick={() => {
+                    dispatch({
+                      type: 'IncreaseAmount',
+                      payload: cartInfo[id].id,
+                    });
+                  }}
+                >
+                  +
+                </button>
+              </td>
+              <td>{cartInfo[id].option ? cartInfo[id].option : null}</td>
+            </tr>
+          ))}
+          {/* {cartInfo.map((info, index) => (
             <tr key={info.id}>
               <td>{index + 1}</td>
               <td>{info.name}</td>
@@ -55,7 +87,7 @@ const Cart = ({ cartInfo, dispatch }) => {
               </td>
               <td>{info.option ? info.option : null}</td>
             </tr>
-          ))}
+          ))} */}
         </tbody>
       </Table>
 
