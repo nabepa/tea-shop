@@ -1,3 +1,4 @@
+import './detail.scss';
 import { useHistory, useParams } from 'react-router-dom';
 import { Container, Row, Col, Button, Nav } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
@@ -29,14 +30,25 @@ const Detail = ({ products, cartInfo, dispatch }) => {
 
   return (
     <>
-      <Container>
+      <header className='detail-header'>
+        <Button
+          className='mx-2 my-3'
+          variant='outline-success'
+          onClick={() => {
+            history.goBack();
+          }}
+        >
+          Back
+        </Button>
         {/* Todo: 서버와 연계, 재고 없는 경우, 재고 적은 경우 */}
         {/* +재고 없으면  add to cart 못누르게 */}
         {alert ? (
-          <div className='my-alert-black'>
+          <div className='my-alert-green'>
             <p>Low in Stock</p>
           </div>
         ) : null}
+      </header>
+      <Container>
         <Row>
           <Col className='mt-5' md={6}>
             <img src={target.url} width='100%' />
@@ -48,15 +60,6 @@ const Detail = ({ products, cartInfo, dispatch }) => {
             <p>{target.stock} EA</p>
             <Button variant='outline-success' onClick={addToCart}>
               Add To Cart
-            </Button>
-            <Button
-              className='mx-2'
-              variant='outline-success'
-              onClick={() => {
-                history.goBack();
-              }}
-            >
-              Back
             </Button>
           </Col>
         </Row>
