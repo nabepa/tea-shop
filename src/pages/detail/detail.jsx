@@ -3,13 +3,14 @@ import { useHistory, useParams } from 'react-router-dom';
 import { Container, Row, Col, Button, Nav } from 'react-bootstrap';
 import React, { memo, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import TabContents from '../../components/tab/tab-contents';
 
-const Detail = memo(({ productRepository, cartInfo, dispatch }) => {
+const Detail = memo(({ productRepository, dispatch }) => {
   const { id } = useParams();
+  const [target, setTarget] = useState();
   const [alert, setAlert] = useState(false);
   const [tabId, setTabId] = useState(0);
   const history = useHistory();
-  const [target, setTarget] = useState();
 
   const addToCart = () => {
     target &&
@@ -49,8 +50,7 @@ const Detail = memo(({ productRepository, cartInfo, dispatch }) => {
         >
           Back
         </Button>
-        {/* Todo: 서버와 연계, 재고 없는 경우, 재고 적은 경우 */}
-        {/* +재고 없으면  add to cart 못누르게 */}
+        {/* 재고 없으면  add to cart 못누르게 */}
         {alert ? (
           <div className='my-alert-green'>
             <p>Low in Stock</p>
@@ -96,25 +96,14 @@ const Detail = memo(({ productRepository, cartInfo, dispatch }) => {
               setTabId(1);
             }}
           >
-            Related
+            How To Drink
           </Nav.Link>
         </Nav.Item>
       </Nav>
+      <TabContents tabId={tabId} product={target} />
     </>
   );
 });
-
-// Todo: make as component
-function TabContent({ tabId }) {
-  switch (tabId) {
-    case 0:
-      return <div>0</div>;
-    case 1:
-      return <div>1</div>;
-    default:
-      return new Error('Not matched tabId!');
-  }
-}
 
 function mapStateToProps(state) {
   return {
