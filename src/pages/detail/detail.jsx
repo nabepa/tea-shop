@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 const Detail = memo(({ productRepository, cartInfo, dispatch }) => {
   const { id } = useParams();
-  const [alert, setAlert] = useState(true);
+  const [alert, setAlert] = useState(false);
   const [tabId, setTabId] = useState(0);
   const history = useHistory();
   const [target, setTarget] = useState();
@@ -20,19 +20,22 @@ const Detail = memo(({ productRepository, cartInfo, dispatch }) => {
     history.push('/cart');
   };
 
-  useEffect(() => {
-    const timmer = setTimeout(() => {
-      setAlert(false);
-    }, 2000);
-    return () => {
-      clearTimeout(timmer);
-    };
-  }, []);
-
   useEffect(async () => {
     const newTarget = await productRepository.getById(id);
     setTarget(newTarget);
   }, [id]);
+
+  useEffect(() => {
+    if (target && target.stock <= 5) {
+      setAlert(true);
+      const timmer = setTimeout(() => {
+        setAlert(false);
+      }, 2000);
+      return () => {
+        clearTimeout(timmer);
+      };
+    }
+  }, [target]);
 
   return (
     <>
