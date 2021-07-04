@@ -28,7 +28,11 @@ const Cart = ({ cartInfo, dispatch }) => {
           className='mx-3 my-2'
           variant='outline-dark'
           onClick={() => {
-            history.push('/purchase');
+            if (calcTotal(cartInfo) !== 0) {
+              history.push('/purchase');
+            } else {
+              alert('Your cart have any products!');
+            }
           }}
         >
           Order
@@ -81,7 +85,7 @@ const Cart = ({ cartInfo, dispatch }) => {
           <tr>
             <td colSpan='3'>TOTAL : </td>
             <td className='number' colSpan='1'>
-              $ {calcTotal(cartInfo)}
+              $ {Number.parseFloat(calcTotal(cartInfo)).toFixed(2)}
             </td>
           </tr>
         </tbody>
@@ -95,7 +99,7 @@ function calcTotal(cartInfo) {
   for (let id in cartInfo) {
     total += cartInfo[id].pay;
   }
-  return Number.parseFloat(total).toFixed(2).padStart(5, '0');
+  return total;
 }
 
 function mapStateToProps(state) {
