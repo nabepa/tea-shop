@@ -1,30 +1,18 @@
 import { Switch, Route, Link } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import './app.css';
-import initData from './data/teas';
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import Home from './pages/home/home';
 import Detail from './pages/detail/detail';
 import Cart from './pages/cart/cart';
 import Category from './pages/category/category';
 
 function App({ productRepository }) {
-  const [products, setProducts] = useState(initData);
-  const showMore = useCallback(async () => {
-    const added = await productRepository.getMore();
-    setProducts((prevState) => {
-      const newStates = { ...prevState, ...added };
-      console.log(newStates);
-      return newStates;
-    });
-  }, []);
-
   return (
     <div className='App'>
       <Navbar bg='light' expand='lg'>
         <Container>
           <Navbar.Brand as={Link} to='/'>
-            {/* Todo: Add icon */}
             Tea World
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -52,10 +40,10 @@ function App({ productRepository }) {
 
       <Switch>
         <Route exact path='/'>
-          <Home products={products} showMore={showMore} />
+          <Home productRepository={productRepository} />
         </Route>
         <Route path='/detail/:id'>
-          <Detail productRepository={productRepository} products={products} />
+          <Detail productRepository={productRepository} />
         </Route>
         <Route path='/green'>
           <Category

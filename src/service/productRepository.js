@@ -1,21 +1,16 @@
 import { firebaseDB } from './firebase';
 
 class ProductRepository {
-  constructor() {
-    this.lastId = '';
-  }
-
-  async getMore() {
+  async getMore(cursorId) {
     const querySnapshot = await firebaseDB
       .collection('products')
-      .where('id', '>', this.lastId)
+      .where('id', '>', cursorId)
       .orderBy('id')
       .limit(3)
       .get();
     const products = {};
     querySnapshot.forEach((doc) => {
       products[doc.id] = { ...doc.data() };
-      this.lastId = doc.id;
     });
     return products;
   }
