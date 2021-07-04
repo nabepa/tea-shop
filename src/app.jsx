@@ -58,13 +58,25 @@ function App({ productRepository }) {
           <Detail productRepository={productRepository} products={products} />
         </Route>
         <Route path='/green'>
-          <Category category='green' productRepository={productRepository} />
-        </Route>
-        <Route path='/herbal'>
-          <Category category='herbal' productRepository={productRepository} />
+          <Category
+            category='green'
+            title='Green Tea'
+            productRepository={productRepository}
+          />
         </Route>
         <Route path='/rooibos'>
-          <Category category='rooibos' productRepository={productRepository} />
+          <Category
+            category='rooibos'
+            title='Rooibos Tea'
+            productRepository={productRepository}
+          />
+        </Route>
+        <Route path='/herbal'>
+          <Category
+            category='herbal'
+            title='Herbal Tea'
+            productRepository={productRepository}
+          />
         </Route>
         <Route path='/cart'>
           <Cart />
@@ -73,13 +85,6 @@ function App({ productRepository }) {
           <h1>Not Found</h1>
         </Route>
       </Switch>
-      <button
-        onClick={() => {
-          productRepository.getById('6xS0s39dYpyv5eHOm2aQ');
-        }}
-      >
-        test
-      </button>
     </div>
   );
 }

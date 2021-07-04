@@ -31,7 +31,6 @@ const Detail = memo(({ productRepository, cartInfo, dispatch }) => {
 
   useEffect(async () => {
     const newTarget = await productRepository.getById(id);
-    console.log(newTarget);
     setTarget(newTarget);
   }, [id]);
 

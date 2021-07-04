@@ -6,7 +6,7 @@ import Card from '../../components/card/card';
 const Home = memo(({ products, showMore }) => (
   <>
     {/* Todo: Remove Jumbtron, not supported */}
-    <Jumbotron className='background'>
+    <Jumbotron className='background-home'>
       <h1>20th anniversary sale - 20% off</h1>
       <p className='event-description'>
         To show our gratitude for our 20th anniversary, we will be holding an
