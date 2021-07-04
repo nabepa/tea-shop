@@ -1,6 +1,6 @@
-const teas = [
-  {
-    id: '0',
+const teas = {
+  '00': {
+    id: '00',
     category: 'green',
     name: 'sencha',
     flavour: 'Fresh, delicate Umami touch.',
@@ -9,8 +9,8 @@ const teas = [
     url: 'https://res.cloudinary.com/dukjzo7tf/image/upload/v1625295884/tea-shop/green-sencha.jpg',
   },
 
-  {
-    id: '1',
+  '01': {
+    id: '01',
     category: 'green',
     name: 'raindrop',
     flavour: 'Fresh, grassy after rain day.',
@@ -19,8 +19,8 @@ const teas = [
     url: 'https://res.cloudinary.com/dukjzo7tf/image/upload/v1625293684/tea-shop/green-raindrop.jpg',
   },
 
-  {
-    id: '2',
+  '02': {
+    id: '02',
     category: 'herbal',
     name: 'festival',
     flavour: 'Tosty, sweet and fruity.',
@@ -28,6 +28,6 @@ const teas = [
     stock: 4,
     url: 'https://res.cloudinary.com/dukjzo7tf/image/upload/v1625293684/tea-shop/herbal-festival.jpg',
   },
-];
+};
 
 export default teas;

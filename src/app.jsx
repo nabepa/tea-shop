@@ -13,7 +13,8 @@ function App({ productRepository }) {
   const showMore = useCallback(async () => {
     const added = await productRepository.getMore();
     setProducts((prevState) => {
-      const newStates = [...prevState, ...added];
+      const newStates = { ...prevState, ...added };
+      console.log(newStates);
       return newStates;
     });
   }, []);
@@ -35,11 +36,11 @@ function App({ productRepository }) {
               <Nav.Link as={Link} to='/green'>
                 Green Tea
               </Nav.Link>
-              <Nav.Link as={Link} to='/herbal'>
-                Herbal Tea
-              </Nav.Link>
               <Nav.Link as={Link} to='/rooibos'>
                 Rooibos Tea
+              </Nav.Link>
+              <Nav.Link as={Link} to='/herbal'>
+                Herbal Tea
               </Nav.Link>
               <Nav.Link as={Link} to='/cart'>
                 My Cart
@@ -54,7 +55,7 @@ function App({ productRepository }) {
           <Home products={products} showMore={showMore} />
         </Route>
         <Route path='/detail/:id'>
-          <Detail products={products} />
+          <Detail productRepository={productRepository} products={products} />
         </Route>
         <Route path='/green'>
           <Category category='green' productRepository={productRepository} />
@@ -72,6 +73,13 @@ function App({ productRepository }) {
           <h1>Not Found</h1>
         </Route>
       </Switch>
+      <button
+        onClick={() => {
+          productRepository.getById('6xS0s39dYpyv5eHOm2aQ');
+        }}
+      >
+        test
+      </button>
     </div>
   );
 }
