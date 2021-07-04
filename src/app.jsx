@@ -6,6 +6,7 @@ import React, { useState, useCallback } from 'react';
 import Home from './pages/home/home';
 import Detail from './pages/detail/detail';
 import Cart from './pages/cart/cart';
+import Category from './pages/category/category';
 
 function App({ productRepository }) {
   const [products, setProducts] = useState(initData);
@@ -16,8 +17,6 @@ function App({ productRepository }) {
       return newStates;
     });
   }, []);
-
-  console.log(products);
 
   return (
     <div className='App'>
@@ -42,9 +41,6 @@ function App({ productRepository }) {
               <Nav.Link as={Link} to='/rooibos'>
                 Rooibos Tea
               </Nav.Link>
-              <Nav.Link as={Link} to='/blend'>
-                Special Blend
-              </Nav.Link>
               <Nav.Link as={Link} to='/cart'>
                 My Cart
               </Nav.Link>
@@ -60,7 +56,15 @@ function App({ productRepository }) {
         <Route path='/detail/:id'>
           <Detail products={products} />
         </Route>
-        {/* Todo: Add pages of each tea */}
+        <Route path='/green'>
+          <Category category='green' productRepository={productRepository} />
+        </Route>
+        <Route path='/herbal'>
+          <Category category='herbal' productRepository={productRepository} />
+        </Route>
+        <Route path='/rooibos'>
+          <Category category='rooibos' productRepository={productRepository} />
+        </Route>
         <Route path='/cart'>
           <Cart />
         </Route>
