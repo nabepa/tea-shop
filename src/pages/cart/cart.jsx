@@ -1,30 +1,44 @@
 import './cart.scss';
 import { Table, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import React from 'react';
 import { useHistory } from 'react-router-dom';
+import React from 'react';
 
-// Todo: 주문 기능
+// Todo: 주문 서버와 연계
 
 const Cart = ({ cartInfo, dispatch }) => {
   const history = useHistory();
 
   return (
     <>
-      <Button
-        className='mx-2 my-2'
-        variant='outline-dark'
-        onClick={() => {
-          history.goBack();
-        }}
-      >
-        Back
-      </Button>
+      <div className='cart-header'>
+        <Button
+          className='mx-3 my-2'
+          variant='outline-dark'
+          onClick={() => {
+            history.goBack();
+          }}
+        >
+          Back
+        </Button>
+        <div className='my-alert-green'>
+          <p>Now on Sale 20% off</p>
+        </div>
+        <Button
+          className='mx-3 my-2'
+          variant='outline-dark'
+          onClick={() => {
+            history.push('/purchase');
+          }}
+        >
+          Order
+        </Button>
+      </div>
       <Table responsive>
         <thead>
           <tr>
             <th>#</th>
-            {['Product', 'Amount', 'Option'].map((attribute, index) => (
+            {['Product', 'Amount', 'Price'].map((attribute, index) => (
               <th key={index}>{attribute}</th>
             ))}
           </tr>
@@ -34,7 +48,7 @@ const Cart = ({ cartInfo, dispatch }) => {
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{cartInfo[id].name}</td>
-              <td>
+              <td className='number'>
                 <button
                   className='stock-button'
                   onClick={() => {
@@ -59,18 +73,30 @@ const Cart = ({ cartInfo, dispatch }) => {
                   +
                 </button>
               </td>
-              <td>{cartInfo[id].option ? cartInfo[id].option : null}</td>
+              <td className='number' colSpan='1'>
+                $ {Number.parseFloat(cartInfo[id].pay).toFixed(2)}
+              </td>
             </tr>
           ))}
+          <tr>
+            <td colSpan='3'>TOTAL : </td>
+            <td className='number' colSpan='1'>
+              $ {calcTotal(cartInfo)}
+            </td>
+          </tr>
         </tbody>
       </Table>
-
-      <div className='my-alert-green'>
-        <p>Now on Sale 20% off</p>
-      </div>
     </>
   );
 };
+
+function calcTotal(cartInfo) {
+  let total = 0;
+  for (let id in cartInfo) {
+    total += cartInfo[id].pay;
+  }
+  return Number.parseFloat(total).toFixed(2).padStart(5, '0');
+}
 
 function mapStateToProps(state) {
   return {

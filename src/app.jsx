@@ -1,6 +1,6 @@
+import './app.scss';
 import { Switch, Route, Link } from 'react-router-dom';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import './app.css';
 import React from 'react';
 import Home from './pages/home/home';
 import Detail from './pages/detail/detail';
@@ -68,6 +68,11 @@ function App({ productRepository }) {
         </Route>
         <Route path='/cart'>
           <Cart />
+        </Route>
+        <Route path='/purchase'>
+          <section className='purchase'>
+            <p>Thank you for purchasing!</p>
+          </section>
         </Route>
         <Route path='/:id'>
           <h1>Not Found</h1>

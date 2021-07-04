@@ -16,7 +16,7 @@ const Detail = memo(({ productRepository, dispatch }) => {
     target &&
       dispatch({
         type: 'AddToCart',
-        payload: { id: target.id, name: target.name },
+        payload: { id: target.id, name: target.name, price: target.price },
       });
     history.push('/cart');
   };
