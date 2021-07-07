@@ -1,9 +1,9 @@
-import './detail.scss';
 import React, { memo, useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
 import { Container, Row, Col, Button, Nav } from 'react-bootstrap';
+import { useHistory, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import TabContents from '../../components/tab/tab-contents';
+import './detail.scss';
 
 const Detail = memo(({ productRepository, dispatch }) => {
   const { id } = useParams();

@@ -1,6 +1,6 @@
-import { Col } from 'react-bootstrap';
 import React, { memo } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Col } from 'react-bootstrap';
 
 const Card = memo(({ product }) => {
   const history = useHistory();

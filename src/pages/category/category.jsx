@@ -1,7 +1,7 @@
-import './category.scss';
-import { Jumbotron, Container, Row } from 'react-bootstrap';
 import React, { useState, useEffect, memo } from 'react';
+import { Jumbotron, Container, Row } from 'react-bootstrap';
 import Card from '../../components/card/card';
+import './category.scss';
 
 const Category = memo(({ category, title, productRepository }) => {
   const [categoryProducts, setCategoryProducts] = useState([]);

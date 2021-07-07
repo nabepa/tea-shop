@@ -1,13 +1,13 @@
-import './index.css';
-import './common/common.scss';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { cartReducer } from './data/reducer';
 import App from './app';
 import ProductRepository from './service/productRepository';
-import { cartReducer } from './data/reducer';
+import './index.css';
+import './common/common.scss';
 
 const store = createStore(cartReducer);
 const productRepository = new ProductRepository();

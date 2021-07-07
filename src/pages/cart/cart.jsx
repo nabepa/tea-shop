@@ -1,11 +1,10 @@
-import './cart.scss';
+import React from 'react';
 import { Table, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import React from 'react';
+import './cart.scss';
 
 // Todo: 주문 서버와 연계
-
 const Cart = ({ cartInfo, dispatch }) => {
   const history = useHistory();
 

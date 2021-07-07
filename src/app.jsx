@@ -1,11 +1,11 @@
-import './app.scss';
-import { Switch, Route, Link } from 'react-router-dom';
-import { Navbar, Container, Nav } from 'react-bootstrap';
 import React from 'react';
+import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Switch, Route, Link } from 'react-router-dom';
 import Home from './pages/home/home';
 import Detail from './pages/detail/detail';
 import Cart from './pages/cart/cart';
 import Category from './pages/category/category';
+import './app.scss';
 
 function App({ productRepository }) {
   return (
