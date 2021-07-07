@@ -1,9 +1,7 @@
 import './home.scss';
+import React, { memo, useCallback, useState, useEffect } from 'react';
 import { Jumbotron, Button, Container, Row } from 'react-bootstrap';
 import Card from '../../components/card/card';
-import React, { memo, useState } from 'react';
-import { useEffect } from 'react';
-import { useCallback } from 'react';
 
 const Home = memo(({ productRepository }) => {
   const [products, setProducts] = useState({});

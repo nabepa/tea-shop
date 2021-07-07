@@ -1,9 +1,10 @@
 import { Col } from 'react-bootstrap';
-import React from 'react';
+import React, { memo } from 'react';
 import { useHistory } from 'react-router-dom';
 
-const Card = ({ product }) => {
+const Card = memo(({ product }) => {
   const history = useHistory();
+
   return (
     <Col
       md='4'
@@ -17,6 +18,6 @@ const Card = ({ product }) => {
       <p>$ {product.price}</p>
     </Col>
   );
-};
+});
 
 export default Card;

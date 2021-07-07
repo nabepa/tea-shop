@@ -1,7 +1,7 @@
 import './detail.scss';
+import React, { memo, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Container, Row, Col, Button, Nav } from 'react-bootstrap';
-import React, { memo, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import TabContents from '../../components/tab/tab-contents';
 

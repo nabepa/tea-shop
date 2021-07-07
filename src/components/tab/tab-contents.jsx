@@ -1,7 +1,7 @@
+import React, { memo } from 'react';
 import './tab-contents.scss';
-import React from 'react';
 
-const TabContents = ({ tabId, product }) => {
+const TabContents = memo(({ tabId, product }) => {
   switch (tabId) {
     case 0:
       return product ? (
@@ -64,6 +64,6 @@ const TabContents = ({ tabId, product }) => {
     default:
       return new Error('Not matched tabId!');
   }
-};
+});
 
 export default TabContents;
