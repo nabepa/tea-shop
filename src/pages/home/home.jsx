@@ -3,20 +3,24 @@ import { Jumbotron, Button, Container, Row } from 'react-bootstrap';
 import Card from '../../components/card/card';
 import React, { memo, useState } from 'react';
 import { useEffect } from 'react';
+import { useCallback } from 'react';
 
 const Home = memo(({ productRepository }) => {
   const [products, setProducts] = useState({});
-  const showMore = async (cursorId) => {
-    const added = await productRepository.getMore(cursorId);
-    setProducts((prevState) => {
-      const newStates = { ...prevState, ...added };
-      return newStates;
-    });
-  };
+  const showMore = useCallback(
+    async (cursorId) => {
+      const added = await productRepository.getMore(cursorId);
+      setProducts((prevState) => {
+        const newStates = { ...prevState, ...added };
+        return newStates;
+      });
+    },
+    [productRepository]
+  );
 
   useEffect(() => {
     showMore('');
-  }, []);
+  }, [showMore]);
 
   return (
     <>

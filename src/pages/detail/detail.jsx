@@ -21,10 +21,13 @@ const Detail = memo(({ productRepository, dispatch }) => {
     history.push('/cart');
   };
 
-  useEffect(async () => {
-    const newTarget = await productRepository.getById(id);
-    setTarget(newTarget);
-  }, [id]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const newTarget = await productRepository.getById(id);
+      setTarget(newTarget);
+    };
+    fetchData();
+  }, [id, productRepository]);
 
   useEffect(() => {
     if (target && target.stock <= 5) {
@@ -61,7 +64,11 @@ const Detail = memo(({ productRepository, dispatch }) => {
       <Container>
         <Row>
           <Col className='mt-4' md={5}>
-            <img src={target && target.url} width='100%' />
+            <img
+              src={target && target.url}
+              width='100%'
+              alt={target && target.name}
+            />
           </Col>
           <Col className='mt-4' md={6}>
             <div className='detail-left'>
