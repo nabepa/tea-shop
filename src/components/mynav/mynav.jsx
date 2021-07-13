@@ -29,7 +29,7 @@ const Mynav = ({ user, onSignOut }) => (
           {user ? (
             <button onClick={onSignOut}>Sign Out</button>
           ) : (
-            <Nav.Link as={Link} to='/signin'>
+            <Nav.Link as={Link} to='/sign'>
               Sign Up/In
             </Nav.Link>
           )}

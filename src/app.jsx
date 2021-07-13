@@ -5,7 +5,7 @@ import Home from './pages/home/home';
 import Detail from './pages/detail/detail';
 import Cart from './pages/cart/cart';
 import Category from './pages/category/category';
-import Signin from './pages/signin/signin';
+import Signin from './pages/sign-form/sign-form';
 import { useAuth } from './context/auth-context';
 import './app.scss';
 
@@ -51,8 +51,8 @@ function App({ productRepository }) {
             <p>Thank you for purchasing!</p>
           </section>
         </Route>
-        <Route path='/signin'>
-          <Signin onSignUp={signUp} onSignIn={signIn} />
+        <Route path='/sign'>
+          <Signin user={user} onSignUp={signUp} onSignIn={signIn} />
         </Route>
         <Route path='/:id'>
           <h1>Not Found</h1>

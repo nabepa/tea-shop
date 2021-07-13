@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Banner from '../../components/banner/banner';
-import './signin.scss';
+import './sign-form.scss';
 
-const Signin = ({ onSignUp, onSignIn }) => {
+const SignForm = ({ user, onSignUp, onSignIn }) => {
   const [signup, setSignup] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,6 +11,7 @@ const Signin = ({ onSignUp, onSignIn }) => {
   const [url, setURL] = useState('');
   const [text, setText] = useState('');
   const [isAlert, setIsAlert] = useState(false);
+  const history = useHistory();
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -43,6 +45,12 @@ const Signin = ({ onSignUp, onSignIn }) => {
       default:
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      history.goBack();
+    }
+  }, [user]);
 
   return (
     <>
@@ -105,4 +113,4 @@ const Signin = ({ onSignUp, onSignIn }) => {
   );
 };
 
-export default Signin;
+export default SignForm;
