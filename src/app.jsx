@@ -1,43 +1,20 @@
 import React from 'react';
-import { Navbar, Container, Nav } from 'react-bootstrap';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import Mynav from './components/mynav/mynav';
 import Home from './pages/home/home';
 import Detail from './pages/detail/detail';
 import Cart from './pages/cart/cart';
 import Category from './pages/category/category';
+import Signin from './pages/signin/signin';
+import { useAuth } from './context/auth-context';
 import './app.scss';
 
 function App({ productRepository }) {
+  const { user, signUp, signIn, signOut } = useAuth();
+
   return (
     <div className='App'>
-      <Navbar bg='light' expand='lg'>
-        <Container>
-          <Navbar.Brand as={Link} to='/'>
-            Tea World
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
-          <Navbar.Collapse id='basic-navbar-nav'>
-            <Nav className='me-auto'>
-              <Nav.Link as={Link} to='/'>
-                Home
-              </Nav.Link>
-              <Nav.Link as={Link} to='/green'>
-                Green Tea
-              </Nav.Link>
-              <Nav.Link as={Link} to='/rooibos'>
-                Rooibos Tea
-              </Nav.Link>
-              <Nav.Link as={Link} to='/herbal'>
-                Herbal Tea
-              </Nav.Link>
-              <Nav.Link as={Link} to='/cart'>
-                My Cart
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
+      <Mynav user={user} onSignOut={signOut} />
       <Switch>
         <Route exact path='/'>
           <Home productRepository={productRepository} />
@@ -73,6 +50,9 @@ function App({ productRepository }) {
           <section className='purchase'>
             <p>Thank you for purchasing!</p>
           </section>
+        </Route>
+        <Route path='/signin'>
+          <Signin onSignUp={signUp} onSignIn={signIn} />
         </Route>
         <Route path='/:id'>
           <h1>Not Found</h1>

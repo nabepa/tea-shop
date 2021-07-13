@@ -1,0 +1,15 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-black);
+  padding: 16px 32px;
+}
+
+.form-input {
+  font-size: 1rem;
+  margin: 4px 0;
+}
+
+.form-input:focus {
+  outline: 2px dotted var(--color-blue);
+}
