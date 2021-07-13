@@ -50,7 +50,7 @@ const SignForm = ({ user, onSignUp, onSignIn }) => {
     if (user) {
       history.goBack();
     }
-  }, [user]);
+  }, [user, history]);
 
   return (
     <>
@@ -71,6 +71,7 @@ const SignForm = ({ user, onSignUp, onSignIn }) => {
           type='password'
           placeholder='Password'
           value={password}
+          autoComplete='on'
           onChange={onChange}
           required
         />
