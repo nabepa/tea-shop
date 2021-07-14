@@ -11,7 +11,7 @@ import HttpClient from './network/http';
 import AuthService from './service/auth';
 import TokenStorage from './db/token';
 import { AuthErrorEventBus, AuthProvider } from './context/auth-context';
-import ProductRepository from './service/productRepository';
+import ProductRepository from './data/products-firebase';
 
 const baseURL = process.env.REACT_APP_BASE_URL;
 const tokenStorage = new TokenStorage();

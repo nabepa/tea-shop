@@ -1,4 +1,4 @@
-import { firebaseDB } from './firebase';
+import { firebaseDB } from '../service/firebase';
 
 class ProductRepository {
   async getMore(cursorId) {
