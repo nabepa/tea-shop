@@ -23,20 +23,22 @@ const Home = memo(({ productRepository }) => {
   return (
     <>
       {/* Todo: Remove Jumbtron, not supported */}
-      <Jumbotron className='background-home'>
-        <h1>20th anniversary sale - 20% off</h1>
-        <p className='event-description'>
-          To show our gratitude for our 20th anniversary, we will be holding an
-          event with 20% off all products!
-        </p>
-        <div className='button-container'>
-          {/* Todo: Do Something when it is clicked */}
-          {/* <Button className='button-container' variant='info'>
-            Learn more
-          </Button> */}
-        </div>
-      </Jumbotron>
+      <Jumbotron className='home__jumbotron'>
+        <Container>
+          <h1>20th anniversary sale - 20% off</h1>
+          <p className='jumbotron__description'>
+            To show our gratitude for our 20th anniversary, we will be holding
+            an event with 20% off all products!
+          </p>
 
+          {/* Todo: Do Something when it is clicked */}
+          {/* <div className='container-btn'>
+          <Button variant='info'>
+            Learn more
+          </Button>
+        </div> */}
+        </Container>
+      </Jumbotron>
       <Container>
         <Row>
           {Object.keys(products).map((id) => (
@@ -44,10 +46,9 @@ const Home = memo(({ productRepository }) => {
           ))}
         </Row>
       </Container>
-
-      <div className='button-container'>
+      <div className='container-btn'>
         <Button
-          className='mb-3'
+          className='my-3'
           variant='info'
           onClick={() => {
             showMore(Object.keys(products).pop());

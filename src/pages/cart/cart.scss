@@ -2,12 +2,16 @@
   font-family: monospace;
 }
 
-.cart-header {
+.cart__header {
   display: flex;
-  margin-bottom: 0.5em;
+  margin: 1em 0.5em;
 }
 
-.stock-button {
+.cart__list {
+  table-layout: fixed;
+}
+
+.amount-btn {
   margin: 0 0.1em;
   border: 0;
   outline: 0;

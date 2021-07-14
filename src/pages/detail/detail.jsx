@@ -43,7 +43,7 @@ const Detail = memo(({ productRepository, dispatch }) => {
 
   return (
     <>
-      <header className='detail-header'>
+      <header className='detail__header'>
         <Button
           className='mx-2 my-3'
           variant='outline-dark'
@@ -53,7 +53,7 @@ const Detail = memo(({ productRepository, dispatch }) => {
         >
           Back
         </Button>
-        {/* 재고 없으면  add to cart 못누르게 */}
+        {/* Todo: 재고 없으면  add to cart 못누르게, use Banner Component */}
         {alert ? (
           <div className='my-alert-green'>
             <p>Low in Stock</p>
@@ -61,7 +61,7 @@ const Detail = memo(({ productRepository, dispatch }) => {
         ) : null}
       </header>
 
-      <Container>
+      <Container className='detail__main'>
         <Row>
           <Col className='mt-4' md={5}>
             <img
@@ -71,7 +71,7 @@ const Detail = memo(({ productRepository, dispatch }) => {
             />
           </Col>
           <Col className='mt-4' md={6}>
-            <div className='detail-left'>
+            <div className='detail__main__left'>
               <h4 className='pt-5'>{target && target.name}</h4>
               <p>{target && target.flavour}</p>
               <p>$ {target && target.price}</p>

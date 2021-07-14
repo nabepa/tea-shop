@@ -1,15 +1,10 @@
-.background-home {
+.home__jumbotron {
   background-image: url('https://res.cloudinary.com/dukjzo7tf/image/upload/v1625311075/tea-shop/wallpaper/wallpaper-home.jpg');
   background-size: cover;
   background-position: bottom;
   color: white;
 }
 
-.event-description {
+.jumbotron__description {
   font-weight: bold;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
 }

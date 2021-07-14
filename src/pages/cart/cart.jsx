@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button } from 'react-bootstrap';
+import { Table, Button, Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './cart.scss';
@@ -9,8 +9,8 @@ const Cart = ({ cartInfo, dispatch }) => {
   const history = useHistory();
 
   return (
-    <>
-      <div className='cart-header'>
+    <Container className='cart'>
+      <header className='cart__header'>
         <Button
           className='mx-3 my-2'
           variant='outline-dark'
@@ -20,6 +20,7 @@ const Cart = ({ cartInfo, dispatch }) => {
         >
           Back
         </Button>
+        {/* Todo: use banner component */}
         <div className='my-alert-green'>
           <p>Now on Sale 20% off</p>
         </div>
@@ -36,8 +37,9 @@ const Cart = ({ cartInfo, dispatch }) => {
         >
           Order
         </Button>
-      </div>
-      <Table responsive>
+      </header>
+
+      <Table className='cart__list' responsive>
         <thead>
           <tr>
             <th>#</th>
@@ -53,7 +55,7 @@ const Cart = ({ cartInfo, dispatch }) => {
               <td>{cartInfo[id].name}</td>
               <td className='number'>
                 <button
-                  className='stock-button'
+                  className='amount-btn'
                   onClick={() => {
                     dispatch({
                       type: 'DecreaseAmount',
@@ -65,7 +67,7 @@ const Cart = ({ cartInfo, dispatch }) => {
                 </button>
                 {cartInfo[id].amount}
                 <button
-                  className='stock-button'
+                  className='amount-btn'
                   onClick={() => {
                     dispatch({
                       type: 'IncreaseAmount',
@@ -89,7 +91,7 @@ const Cart = ({ cartInfo, dispatch }) => {
           </tr>
         </tbody>
       </Table>
-    </>
+    </Container>
   );
 };
 

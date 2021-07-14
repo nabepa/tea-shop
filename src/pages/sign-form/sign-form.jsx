@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 import Banner from '../../components/banner/banner';
 import './sign-form.scss';
 
@@ -53,48 +54,60 @@ const SignForm = ({ user, onSignUp, onSignIn }) => {
   }, [user, history]);
 
   return (
-    <>
+    <Container>
       <Banner text={text} isAlert={isAlert} />
-      <form className='auth-form' onSubmit={onSubmit}>
-        <input
-          className='form-input'
-          name='email'
-          type='email'
-          placeholder='Email'
-          value={email}
-          onChange={onChange}
-          required
-        />
-        <input
-          className='form-input'
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          autoComplete='on'
-          onChange={onChange}
-          required
-        />
-        {signup && (
+      <form className='sign-form' onSubmit={onSubmit}>
+        <label className='form-label'>
+          Email
           <input
             className='form-input'
-            name='name'
-            type='text'
-            placeholder='Name'
-            value={name}
+            name='email'
+            type='email'
+            placeholder='Email'
+            value={email}
             onChange={onChange}
             required
           />
-        )}
-        {signup && (
+        </label>
+        <label className='form-label'>
+          Password
           <input
             className='form-input'
-            name='url'
-            type='url'
-            placeholder='Profile Image URL (Optional)'
-            value={url}
+            name='password'
+            type='password'
+            placeholder='Password'
+            value={password}
+            autoComplete='on'
             onChange={onChange}
+            required
           />
+        </label>
+        {signup && (
+          <label className='form-label'>
+            Name
+            <input
+              className='form-input'
+              name='name'
+              type='text'
+              placeholder='Name'
+              value={name}
+              onChange={onChange}
+              required
+            />
+          </label>
+        )}
+        {signup && (
+          <label className='form-label'>
+            Profile Image URL (option)
+            <input
+              className='form-input'
+              name='url'
+              type='url'
+              placeholder='Profile Image URL'
+              value={url}
+              onChange={onChange}
+            />
+          </label>
         )}
         <div className='form-signup'>
           <input
@@ -106,11 +119,9 @@ const SignForm = ({ user, onSignUp, onSignIn }) => {
           />
           <label htmlFor='signup'> Create a new account?</label>
         </div>
-        <button className='form-btn auth-form-btn' type='submit'>
-          {signup ? 'Sign Up' : 'Sign In'}
-        </button>
+        <button className='form-btn'>{signup ? 'Sign Up' : 'Sign In'}</button>
       </form>
-    </>
+    </Container>
   );
 };
 

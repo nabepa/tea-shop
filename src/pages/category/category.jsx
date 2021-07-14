@@ -20,7 +20,9 @@ const Category = memo(({ category, title, productRepository }) => {
     <>
       {/* Todo: Remove Jumbtron, not supported at future version*/}
       <Jumbotron className={`background-${category}`}>
-        <h1>{title}</h1>
+        <Container>
+          <h1>{title}</h1>
+        </Container>
       </Jumbotron>
 
       <Container>
