@@ -26,14 +26,23 @@ const Mynav = ({ user, onSignOut }) => (
           <Nav.Link as={Link} to='/cart'>
             My Cart
           </Nav.Link>
-          {user ? (
-            <Nav.Link onClick={onSignOut}>Sign Out</Nav.Link>
-          ) : (
-            <Nav.Link as={Link} to='/sign'>
-              Sign Up/In
+
+          {user && user.admin ? (
+            <Nav.Link as={Link} to='/'>
+              Dashboard
             </Nav.Link>
-          )}
+          ) : undefined}
         </Nav>
+      </Navbar.Collapse>
+
+      <Navbar.Collapse className='justify-content-end'>
+        {user ? (
+          <Nav.Link onClick={onSignOut}>Sign Out</Nav.Link>
+        ) : (
+          <Nav.Link as={Link} to='/sign'>
+            Sign Up/In
+          </Nav.Link>
+        )}
       </Navbar.Collapse>
     </Container>
   </Navbar>
