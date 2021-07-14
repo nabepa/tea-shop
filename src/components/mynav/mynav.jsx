@@ -27,7 +27,7 @@ const Mynav = ({ user, onSignOut }) => (
             My Cart
           </Nav.Link>
           {user ? (
-            <button onClick={onSignOut}>Sign Out</button>
+            <Nav.Link onClick={onSignOut}>Sign Out</Nav.Link>
           ) : (
             <Nav.Link as={Link} to='/sign'>
               Sign Up/In
