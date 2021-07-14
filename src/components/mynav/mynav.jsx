@@ -28,8 +28,8 @@ const Mynav = ({ user, onSignOut }) => (
           </Nav.Link>
 
           {user && user.admin ? (
-            <Nav.Link as={Link} to='/'>
-              Dashboard
+            <Nav.Link as={Link} to='/manage'>
+              Manage
             </Nav.Link>
           ) : undefined}
         </Nav>

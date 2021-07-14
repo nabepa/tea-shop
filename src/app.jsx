@@ -6,6 +6,7 @@ import Detail from './pages/detail/detail';
 import Cart from './pages/cart/cart';
 import Category from './pages/category/category';
 import Signin from './pages/sign-form/sign-form';
+import Manage from './pages/manage/manage';
 import { useAuth } from './context/auth-context';
 import './app.scss';
 
@@ -53,6 +54,9 @@ function App({ productRepository }) {
         </Route>
         <Route path='/sign'>
           <Signin user={user} onSignUp={signUp} onSignIn={signIn} />
+        </Route>
+        <Route path='/manage'>
+          <Manage />
         </Route>
         <Route path='/:id'>
           <h1>Not Found</h1>
