@@ -55,6 +55,18 @@ const TabContents = memo(({ tabId, product }) => {
             If desired, add milk and sugar to enhance the flavor of bold teas or
             add honey to lightly flavored teas.
           </p>
+          <p>
+            Make a pot of green tea.
+            <br />
+            Green tea is known for its high level of antioxidants, a
+            cancer-fighting chemical.
+            <br />
+            Additionally, green tea can boost your metabolism and may reduce
+            your risk of developing neurological disorders.
+            <br />
+            However, green tea is high in caffeine and can make you jittery if
+            you drink too much.
+          </p>
           <img
             src='https://res.cloudinary.com/dukjzo7tf/image/upload/v1625387138/tea-shop/wallpaper/ioz77cmbvx0mwqiteo4a.jpg'
             alt='how to drink tea'
